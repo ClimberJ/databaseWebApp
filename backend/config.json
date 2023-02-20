@@ -1,0 +1,306 @@
+{
+    "localisation": {
+        "de": {
+            "actions": "Aktionen",
+            "edit": "Bearbeiten",
+            "delete": "Löschen",
+            "add": "Hinzufügen",
+            "update": "Aktualisieren",
+            "calculate": "Berechnen",
+            "search": "Suchen",
+            "editEntry": "Eintrag bearbeiten",
+            "addEntry": "Eintrag hinzufügen",
+            "deleteConfirm": "Eintrag löschen?"
+        },
+        "en": {
+            "actions": "Actions",
+            "edit": "Edit",
+            "delete": "Delete",
+            "add": "Add",
+            "update": "Update",
+            "calculate": "Calculate",
+            "search": "Search",
+            "editEntry": "Edit entry",
+            "addEntry":"Add entry",
+            "deleteConfirm": "Delete entry?"
+        }
+    },
+    "pages": [
+        {
+            "link": "/components",
+            "headers": [
+                "Nr.",
+                "Name",
+                "Typ",
+                "Standort"
+            ],
+            "varNames": [
+                "component_id",
+                "component_name",
+                "component_type_name",
+                "location_name"
+            ],
+            "inputVars": [
+                "component_name",
+                "component_type",
+                "component_location"
+            ],
+            "buttonName": "Netzwerkkomponenten",
+            "buttonImage": "router-network",
+            "opt": [
+                {
+                    "type": "text",
+                    "id": "component_name",
+                    "name": "component_name",
+                    "placeholder": "Gerätename",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                },
+                {
+                    "type": "selection",
+                    "id": "component_type",
+                    "name": "component_type",
+                    "path": "/componenttypes",
+                    "placeholder": "Typ",
+                    "required": false
+                },
+                {
+                    "type": "selection",
+                    "id": "component_location",
+                    "name": "component_location",
+                    "path": "/locations",
+                    "placeholder": "Standort",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "link": "/hosts",
+            "headers": [
+                "Nr.",
+                "Name",
+                "Typ",
+                "IP-Adresse",
+                "MAC-Adresse",
+                "VLAN",
+                "Standort"
+            ],
+            "varNames": [
+                "host_id",
+                "host_name",
+                "component_type_name",
+                "host_ip",
+                "host_mac",
+                "vlan_name",
+                "location_name"
+            ],
+            "inputVars": [
+                "host_name",
+                "host_type",
+                "host_ip",
+                "host_mac",
+                "host_vlan",
+                "host_location"
+            ],
+            "buttonName": "Hosts",
+            "buttonImage": "desktop-classic",
+            "opt": [
+                {
+                    "type": "text",
+                    "id": "host_name",
+                    "name": "host_name",
+                    "placeholder": "Name",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                },
+                {
+                    "type": "selection",
+                    "id": "host_type",
+                    "name": "host_type",
+                    "path": "/componenttypes",
+                    "placeholder": "Typ",
+                    "required": true
+                },
+                {
+                    "type": "text",
+                    "id": "host_ip",
+                    "name": "host_ip",
+                    "placeholder": "IP-Adresse",
+                    "required": false,
+                    "pattern": "^(?:(?:2[0-5][0-5]|[01][0-9][0-9]|[0-9][0-9]|[0-9])\\.){3}(?:2[0-5][0-5]|[01][0-9][0-9]|[0-9][0-9]|[0-9])$"
+                },
+                {
+                    "type": "text",
+                    "id": "host_mac",
+                    "name": "host_mac",
+                    "placeholder": "MAC-Adresse",
+                    "required": false,
+                    "pattern": "^(?:(?:[0-9]|[a-f]){2}:){5}(?:[0-9]|[a-f]){2}$"
+                },
+                {
+                    "type": "selection",
+                    "id": "host_vlan",
+                    "name": "host_vlan",
+                    "path": "/vlans",
+                    "placeholder": "VLAN",
+                    "required": false
+                },
+                {
+                    "type": "selection",
+                    "id": "host_location",
+                    "name": "host_location",
+                    "path": "/locations",
+                    "placeholder": "Standort",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "link": "/ports",
+            "headers": [
+                "Nr.",
+                "Name",
+                "Modus",
+                "Netzwerkkomponente",
+                "Endgerät"
+            ],
+            "varNames": [
+                "port_id",
+                "port_name",
+                "port_mode",
+                "component_name",
+                "host_name"
+            ],
+            "inputVars": [
+                "port_name",
+                "port_mode",
+                "port_component",
+                "port_host"
+            ],
+            "buttonName": "Ports",
+            "buttonImage": "ethernet",
+            "opt": [
+                {
+                    "type": "text",
+                    "id": "port_name",
+                    "name": "port_name",
+                    "placeholder": "Portname",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                },
+                {
+                    "type": "text",
+                    "id": "port_mode",
+                    "name": "port_mode",
+                    "placeholder": "Modus (Access/Trunk)",
+                    "required": true,
+                    "pattern": "^(?:Access)|(?:Trunk)$"
+                },
+                {
+                    "type": "selection",
+                    "id": "port_component",
+                    "name": "port_component",
+                    "path": "/components",
+                    "placeholder": "Netzwerkgerät",
+                    "required": false
+                },
+                {
+                    "type": "selection",
+                    "id": "port_host",
+                    "name": "port_host",
+                    "path": "/hosts",
+                    "placeholder": "Host",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "link": "/vlans",
+            "headers": [
+                "Nr.",
+                "Nummer",
+                "Name"
+            ],
+            "varNames": [
+                "vlan_id",
+                "vlan_number",
+                "vlan_name"
+            ],
+            "inputVars": [
+                "vlan_number",
+                "vlan_name"
+            ],
+            "buttonName": "VLANs",
+            "buttonImage": "lan",
+            "opt": [
+                {
+                    "type": "number",
+                    "id": "vlan_number",
+                    "name": "vlan_number",
+                    "placeholder": "VLAN Nr.",
+                    "required": true
+                },
+                {
+                    "type": "text",
+                    "id": "vlan_name",
+                    "name": "vlan_name",
+                    "placeholder": "VLAN Name",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                }
+            ]
+        },
+        {
+            "link": "/locations",
+            "headers": [
+                "Nr.",
+                "Name"
+            ],
+            "varNames": [
+                "location_id",
+                "location_name"
+            ],
+            "inputVars": [
+                "location_name"
+            ],
+            "buttonName": "Standorte",
+            "buttonImage": "map-marker-multiple",
+            "opt": [
+                {
+                    "type": "text",
+                    "id": "location_name",
+                    "name": "location_name",
+                    "placeholder": "Standortname",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                }
+            ]
+        },
+        {
+            "link": "/componenttypes",
+            "headers": [
+                "Nr.",
+                "Name"
+            ],
+            "varNames": [
+                "component_type_id",
+                "component_type_name"
+            ],
+            "inputVars": [
+                "component_type_name"
+            ],
+            "buttonName": "Gerätetypen",
+            "buttonImage": "server",
+            "opt": [
+                {
+                    "type": "text",
+                    "id": "component_type_name",
+                    "name": "component_type_name",
+                    "placeholder": "Typname",
+                    "required": true,
+                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                }
+            ]
+        }
+    ]
+}

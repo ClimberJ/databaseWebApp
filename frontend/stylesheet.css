@@ -1,0 +1,448 @@
+body {
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: auto;
+    line-break: auto;
+}
+
+th {
+    border: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    position: sticky;
+    top: 0px;
+    background: white;
+    box-shadow: 0px 2px gray;
+}
+
+td {
+    padding: 10px 5px;
+    border: 0px;
+    text-align: center;
+}
+
+input {
+    box-sizing: border-box;
+    height: 20%;
+    color: white;
+    background: rgb(46, 154, 158);
+    /* background: linear-gradient(55deg, rgba(46,154,158,1) 0%, rgba(86,143,111,1) 91%, rgba(86,143,111,1) 100%); */
+    border: 0px;
+    border-bottom: 3px solid rgb(83, 177, 172);
+    font-size: 100%;
+    margin: 5px;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-bottom: 3px solid rgb(255, 90, 90);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+form {
+    width: 100%;
+}
+
+select {
+    box-sizing: border-box;
+    height: 20%;
+    color: white;
+    background-color: rgb(46, 154, 158);
+    /* background: linear-gradient(55deg, rgba(46,154,158,1) 0%, rgba(86,143,111,1) 91%, rgba(86,143,111,1) 100%); */
+    border: 0px;
+    border-bottom: 3px solid rgb(83, 177, 172);
+    font-size: 100%;
+    margin: 5px;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.mainTable {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(46, 154, 158);
+    background: linear-gradient(55deg, rgba(46, 154, 158, 1) 0%, rgba(61, 175, 110, 1) 50%, rgba(46, 158, 116, 1) 100%);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-break: normal;
+}
+
+.sidebarOpen {
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
+    width: 15%;
+    height: 100%;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    /* min-width: min-content; */
+}
+
+.sidebarClosed {
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
+    width: 3%;
+    height: 100%;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    min-width: min-content;
+}
+
+.content {
+    width: 85%;
+    height: 100%;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
+}
+
+.contentClosed {
+    width: 97%;
+    transition: -100ms;
+}
+
+.tablediv {
+    height: 80%;
+    overflow: scroll;
+}
+
+.sidebarButton {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
+}
+
+.sidebarButton:hover {
+    background-color: rgb(119, 203, 206);
+}
+
+.sidebarSwitch {
+    margin-top: auto;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
+}
+
+.tableUnevenRow {
+    padding: 10px 5px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.tableEvenRow {
+    padding: 10px 5px;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+.logodiv {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.logo {
+    width: 60%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.buttonImg {
+    width: 20%;
+    max-width: 30px;
+    margin-right: 5px;
+    margin-top: auto;
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+.buttonMDI {
+    margin-right: 5px;
+    font-size: xx-large;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: 500ms;
+}
+
+.buttonMDIclosed {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: xx-large;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: 500ms;
+}
+
+.buttondiv {
+    width: 100%;
+    display: flex;
+    pointer-events: none;
+}
+
+.buttonText {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.hidden {
+    font-size: 0px;
+    margin: 0px;
+}
+
+.submit {
+    border: 0px;
+    font-weight: bolder;
+    transition: 100ms;
+}
+
+.submit:hover {
+    background-color: rgb(68, 158, 161);
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: whitesmoke;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: whitesmoke;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: whitesmoke;
+}
+
+.actionButton {
+    background-color: lightblue;
+    border: 0px solid black;
+    color: black;
+    margin: 2px;
+}
+
+.actionButton:hover {
+    background-color: rgb(114, 190, 212);
+}
+
+.popupButton {
+    position: absolute;
+    background: rgba(1, 1, 1, 0.5);
+    border: 0px;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    transition: 100ms;
+}
+
+.popupButton:disabled {
+    background-color: rgba(1, 1, 1, 0);
+    pointer-events: none;
+}
+
+.popupOpt {
+    position: relative;
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+
+.popupHeader {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.popupHeader>span {
+    font-size: larger;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.popupHeader>button {
+    height: 75%;
+    background: transparent;
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: xx-large;
+    right: 5px;
+    top: 5px;
+    position: absolute;
+    border-radius: 100%;
+}
+
+.popupHeader>button:hover {
+    background: rgb(233, 233, 233);
+}
+
+.popupHeader>button>img {
+    height: 100%;
+}
+
+.popupClosed {
+    position: absolute;
+    top: 100vh;
+    width: 0vw;
+    height: 50vh;
+    margin-right: 50vw;
+    margin-left: 50vw;
+    background-color: white;
+    z-index: 2;
+    opacity: 0;
+    transition: 500ms;
+}
+
+.popupOpen {
+    position: absolute;
+    top: 25vh;
+    width: 25vw;
+    height: 50vh;
+    margin-right: 37.5vw;
+    margin-left: 37.5vw;
+    background-color: white;
+    z-index: 2;
+    transition: 500ms;
+}
+
+.editSubmit {
+    border: 0px;
+    font-weight: bolder;
+    transition: 100ms;
+    height: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.popupOpt>form>input {
+    height: 10%;
+    width: 90%;
+    color: white;
+    background-color: rgb(46, 154, 158);
+    border: 0px;
+    border-bottom: 3px solid rgb(83, 177, 172);
+    font-size: 100%;
+    margin-top: 5px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.popupOpt>form>.submit {
+    border: 0px;
+    width: fit-content;
+    font-weight: bolder;
+    transition: 100ms;
+    margin-top: 5px;
+}
+
+.popupOpt>form>select {
+    box-sizing: border-box;
+    height: 10%;
+    width: 90%;
+    color: white;
+    background-color: rgb(46, 154, 158);
+    border: 0px;
+    border-bottom: 3px solid rgb(83, 177, 172);
+    font-size: 100%;
+    margin-top: 5px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.popupOpt>form>label {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-left: 7%;
+    font-size: smaller;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.actions {
+    width: 12%;
+}
+
+.selected {
+    background-color: rgb(77, 126, 128);
+    background: linear-gradient(90deg, rgba(77, 126, 128, 1) 0%, rgba(95, 158, 160, 0) 50%, rgba(95, 158, 160, 0) 100%);
+    transition: 100ms;
+}
+
+.opt {
+    display: block;
+    height: 20%;
+    background-color: rgb(72, 131, 133);
+    /* background: linear-gradient(145deg, rgba(72,131,133,1) 0%, rgba(72,131,133,1) 63%, rgba(5,57,62,1) 100%); */
+}
+
+.optForm {
+    display: flex;
+    width: 100%;
+    height: 75%;
+}
+
+.optForm > form > input, select {
+    height: 30%;
+}
+
+.optHeader {
+    display: flex;
+    width: 100%;
+    height: 25%;
+}
+
+.headerButton {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    border-radius: 100%;
+}
+
+.headerButton:hover {
+    background-color: #2e9a9e;
+}
+
+h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}

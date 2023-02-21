@@ -1,6 +1,6 @@
 {
     "localisation": {
-        "de": {
+        "de-DE": {
             "actions": "Aktionen",
             "edit": "Bearbeiten",
             "delete": "Löschen",
@@ -12,7 +12,7 @@
             "addEntry": "Eintrag hinzufügen",
             "deleteConfirm": "Eintrag löschen?"
         },
-        "en": {
+        "en-US": {
             "actions": "Actions",
             "edit": "Edit",
             "delete": "Delete",

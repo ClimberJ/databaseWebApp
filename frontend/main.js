@@ -705,7 +705,6 @@ async function closeSidebar() {
 	document.getElementById("sidebarSwitch").onclick = function () { openSidebar() }
 }
 
-
 /**
  * Opens the sidebar by updating the classes and onclick handler of elements.
  */
@@ -737,6 +736,7 @@ async function openSidebar() {
 
 /**
  * Sets the "selected" class to the clicked element and removes it from previously selected elements.
+ * 
  * @param {Event} event - The event that triggered the function.
  */
 function setSelected(event) {
@@ -867,7 +867,7 @@ function createSearchFormFromConfig(config) {
 }
 
 /**
- * Creates an HTML form based on the given configuration object for use in a search dialog.
+ * Handles the submission of an search form.
  * 
  * @param {object[]} config - The configuration object that defines the form elements.
  * @returns {HTMLElement} The HTML form element created based on the configuration object.

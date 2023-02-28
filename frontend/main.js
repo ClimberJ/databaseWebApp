@@ -166,7 +166,7 @@ async function createEntry() {
 	// Collect input data from the form and store it in an object
 	var creationData = {};
 	config.inputVars.forEach(element => {
-		creationData[element] = document.getElementById(element).value;
+		creationData[element] = document.getElementById("popup_" + element).value;
 	});
 
 	// Send a POST request to the API with the input data
@@ -222,7 +222,10 @@ function createFormFromConfig(input) {
 			const attribs = Object.keys(element);
 			for (let i = 0; i < attribs.length; i++) {
 				const attribute = attribs[i];
-				if (attribute == "type" || attribute == "path") { }
+				if (attribute == "id") {
+					node.setAttribute(attribute, "popup_" + element[attribute])
+				}
+				else if (attribute == "type" || attribute == "path") { }
 				else {
 					node.setAttribute(attribute, element[attribute])
 				}
@@ -256,7 +259,12 @@ function createFormFromConfig(input) {
 			const attribs = Object.keys(element);
 			for (let i = 0; i < attribs.length; i++) {
 				const attribute = attribs[i];
-				node.setAttribute(attribute, element[attribute])
+				if (attribute == "id") {
+					node.setAttribute(attribute, "popup_" + element[attribute])
+				}
+				else {
+					node.setAttribute(attribute, element[attribute])
+				}
 			}
 		}
 		// Add the input element to the form
@@ -518,6 +526,7 @@ function closePopUp() {
  * @returns {Promise<HTMLFormElement>} - A promise that resolves to the generated edit form.
  */
 async function createEditFormFromConfig(input, id) {
+	var form;
 	// Get the configuration for the current page from pageConfig and assign it to a variable named config.
 	var config = pageConfig[parseInt(currentMenuStorage.innerText)];
 	// Create a new form element and assign it to a variable named form. Assign a function to its onsubmit event listener.

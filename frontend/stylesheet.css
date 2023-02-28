@@ -315,14 +315,14 @@ select {
 .popupClosed {
     position: absolute;
     top: 100vh;
-    width: 0vw;
+    width: 25vw;
     height: 50vh;
-    margin-right: 50vw;
-    margin-left: 50vw;
+    margin-right: 37.5vw;
+    margin-left: 37.5vw;
     background-color: white;
     z-index: 2;
     opacity: 0;
-    transition: 500ms;
+    transition: 500ms ease-in;
 }
 
 .popupOpen {
@@ -334,7 +334,7 @@ select {
     margin-left: 37.5vw;
     background-color: white;
     z-index: 2;
-    transition: 500ms;
+    transition: 500ms ease-out;
 }
 
 .editSubmit {

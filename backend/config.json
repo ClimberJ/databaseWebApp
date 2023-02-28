@@ -54,7 +54,7 @@
                     "name": "component_name",
                     "placeholder": "Gerätename",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 },
                 {
                     "type": "selection",
@@ -111,7 +111,7 @@
                     "name": "host_name",
                     "placeholder": "Name",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 },
                 {
                     "type": "selection",
@@ -186,7 +186,7 @@
                     "name": "port_name",
                     "placeholder": "Portname",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 },
                 {
                     "type": "text",
@@ -246,7 +246,7 @@
                     "name": "vlan_name",
                     "placeholder": "VLAN Name",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 }
             ]
         },
@@ -272,7 +272,7 @@
                     "name": "location_name",
                     "placeholder": "Standortname",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 }
             ]
         },
@@ -298,7 +298,7 @@
                     "name": "component_type_name",
                     "placeholder": "Typname",
                     "required": true,
-                    "pattern": "^[a-zA-Z0-9_/ -]{1,50}$"
+                    "pattern": "^[a-zA-Z0-9äÄöÖüÜ_/ -]{1,50}$"
                 }
             ]
         }

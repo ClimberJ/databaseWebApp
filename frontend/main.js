@@ -779,9 +779,13 @@ function createSearchFormFromConfig(config) {
 	// add an event listener for when the form is submitted
 	form.onsubmit = function () { handleSearchSubmit(event) };
 
+	// iterate over the configuration object and create form elements based on the type
 	config.forEach(element => {
 		if (element.type == "selection") {
+			// create a dropdown element
 			var node = document.createElement("select");
+
+			// iterate over the attributes of the element object and set them as attributes of the dropdown
 			const attribs = Object.keys(element);
 			for (let i = 0; i < attribs.length; i++) {
 				const attribute = attribs[i];
@@ -791,79 +795,62 @@ function createSearchFormFromConfig(config) {
 				}
 			}
 
-			// iterate over the configuration object and create form elements based on the type
-			config.forEach(element => {
-				if (element.type == "selection") {
-					// create a dropdown element
-					var node = document.createElement("select");
+			// add a "no selection" option to the dropdown
+			var noSelect = document.createElement("option");
+			noSelect.value = NaN;
+			noSelect.innerText = "-";
+			node.appendChild(noSelect);
 
-					// iterate over the attributes of the element object and set them as attributes of the dropdown
-					const attribs = Object.keys(element);
-					for (let i = 0; i < attribs.length; i++) {
-						const attribute = attribs[i];
-						if (attribute == "type" || attribute == "path") { }
-						else {
-							node.setAttribute(attribute, element[attribute])
+			// fetch the values for the dropdown from the server
+			const res = fetch(apiBaseLink + element.path)
+				.then(res => res = res.json())
+				.then(res => res.rows)
+				.then(res => res.forEach(row => {
+					// find the ID and name keys for the row object
+					const idKey = Object.keys(row).find(testString => {
+						if (testString.includes("_id")) {
+							return true;
+						} params
+					});
+					const nameKey = Object.keys(row).find(testString => {
+						if (testString.includes("_name")) {
+							return true;
 						}
-					}
-
-					// add a "no selection" option to the dropdown
-					var noSelect = document.createElement("option");
-					noSelect.value = NaN;
-					noSelect.innerText = "-";
-					node.appendChild(noSelect);
-
-					// fetch the values for the dropdown from the server
-					const res = fetch(apiBaseLink + element.path)
-						.then(res => res = res.json())
-						.then(res => res.rows)
-						.then(res => res.forEach(row => {
-							// find the ID and name keys for the row object
-							const idKey = Object.keys(row).find(testString => {
-								if (testString.includes("_id")) {
-									return true;
-								} params
-							});
-							const nameKey = Object.keys(row).find(testString => {
-								if (testString.includes("_name")) {
-									return true;
-								}
-							});
-							// create an option element and add it to the dropdown
-							var option = document.createElement("option");
-							option.value = row[idKey];
-							option.innerText = row[nameKey];
-							node.appendChild(option);
-						}));
-				}
-				else {
-					// create an input element of the specified type
-					var node = document.createElement("input");
-					const attribs = Object.keys(element);
-					for (let i = 0; i < attribs.length; i++) {
-						const attribute = attribs[i];
-						if (attribute != "required") {
-							node.setAttribute(attribute, element[attribute])
-						}
-					}
-				}
-				// append the form element to the form
-				form.appendChild(node);
-			});
-
-			// append a line break and a submit button to the form
-			form.appendChild(createNode("br"));
-			var submit = createNode("input");
-			submit.type = "submit";
-			submit.value = localisation.search;
-			submit.className = "submit";
-			submit.id = "submit";
-			form.appendChild(submit)
-
-			// return the completed form
-			return form
+					});
+					// create an option element and add it to the dropdown
+					var option = document.createElement("option");
+					option.value = row[idKey];
+					option.innerText = row[nameKey];
+					node.appendChild(option);
+				}));
 		}
-	})
+		else {
+			// create an input element of the specified type
+			var node = document.createElement("input");
+			const attribs = Object.keys(element);
+			for (let i = 0; i < attribs.length; i++) {
+				const attribute = attribs[i];
+				if (attribute != "required") {
+					node.setAttribute(attribute, element[attribute])
+				}
+			}
+		}
+		// append the form element to the form
+		form.appendChild(node);
+	});
+
+	// append a line break and a submit button to the form
+	form.appendChild(createNode("br"));
+	console.log(form);
+	var submit = createNode("input");
+	submit.type = "submit";
+	submit.value = localisation.search;
+	submit.className = "submit";
+	submit.id = "submit";
+	form.appendChild(submit);
+
+	// return the completed form
+	return form
 }
 
 /**
@@ -914,5 +901,5 @@ async function searchEntry() {
 		.then(response => createTable(response, config.headers, config.varNames, true))
 		// Call the createTable function to format and display the search results
 		.then(response => console.log(JSON.stringify(response)));
-		// Log the response data as a JSON string to the console
+	// Log the response data as a JSON string to the console
 }

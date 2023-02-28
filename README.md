@@ -1,6 +1,17 @@
 # Database Web App
 ## Overview
 This highly configurable interface allows for editing, creating and deleting entries in one or more databases. The configuration is managed via a JSON file.
+## Setup
+1. Clone this repository
+2. Configure the pages you want to show in the "pages" section of the [config file](/backend/config.json).
+    - The "link" specifies the http endpoint under wich the data for this page can be accessed.
+    - The "headers" specify what the columns in the table should be called.
+    - The "varNames" specify what the columns are called in the database.
+    - The "inputVars" specify the names of the input fields for editing/creating/deleting. (This will probably be changed.)
+    - The "buttonName" specifies the text on the button in the sidebar.
+    - The "buttonImage" specifies the icon in the button in the sidebar.
+    - "opt" specifies the attribues of the input fields for editing/creating/deleting. If the type is set to selection, the input will be a dropdown. In this case you have to define a path to the endpoit fom wich o gt the options. The frontend will make a GET request to that endpoint and take the column with "_name" as the name of the option and the column with "_id" as the option value. In every other case, the variable name should be the exact name of the attribute you want to set and theariable should be the attributes value.
+   
 ## Technical Stuff
 ### Functions
 | Function | Description |

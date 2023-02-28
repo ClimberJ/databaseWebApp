@@ -1,6 +1,6 @@
 # Database Web App
 ## Overview
-This highly configurable interface allows for editing, creating and deleting entries in one or more databases. The configuration is managed via a JSON file.
+This highly configurable interface allows for editing, creating and deleting entries in one or more databases. The configuration is managed via a JSON file. Feel free to share how you use this project in [here](https://github.com/ClimberJ/databaseWebApp/discussions/categories/show-and-tell).
 ## Setup
 1. Clone this repository
 2. Configure the pages you want to show in the "pages" section of the [config file](/backend/config.json).
@@ -9,8 +9,9 @@ This highly configurable interface allows for editing, creating and deleting ent
     - The "varNames" specify what the columns are called in the database.
     - The "inputVars" specify the names of the input fields for editing/creating/deleting. (This will probably be changed.)
     - The "buttonName" specifies the text on the button in the sidebar.
-    - The "buttonImage" specifies the icon in the button in the sidebar.
+    - The "buttonImage" specifies the icon in the button in the sidebar. The icon has to be a Material Design Icon, a list of which can be found [here](https://pictogrammers.com/library/mdi/).
     - "opt" specifies the attribues of the input fields for editing/creating/deleting. If the type is set to selection, the input will be a dropdown. In this case you have to define a path to the endpoit fom wich o gt the options. The frontend will make a GET request to that endpoint and take the column with "_name" as the name of the option and the column with "_id" as the option value. In every other case, the variable name should be the exact name of the attribute you want to set and theariable should be the attributes value.
+3. Set the logo, icon and page title in the HTML.
    
 ## Technical Stuff
 ### Functions

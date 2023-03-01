@@ -73,6 +73,14 @@ select {
     margin: 5px;
 }
 
+h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .main {
     width: 100vw;
     height: 100vh;
@@ -439,10 +447,56 @@ select {
     background-color: #2e9a9e;
 }
 
-h3 {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+/* Alerts */
+
+.alertArea {
+    width: 30%;
+    height: 100vh;
+    color: whitesmoke;
+    overflow-y: hidden;
+    z-index: 1000;
+    right: 0px;
+    pointer-events: none;
+    position: absolute;
 }
+
+.alert {
+    height: fit-content;
+    margin: 10px;
+    margin-bottom: 0px;
+    padding: 10px;
+    transition: 200ms;
+    color: white;
+    border: 0px;
+    text-align: left;
+    pointer-events: all;
+    width: 95%;
+}
+
+.alert > div {
+    display: flex;
+    width: 100%;
+}
+
+.alert > div > span {
+    font-weight: bold;
+}
+
+.disabled {
+    opacity: 0;
+    transition: 200ms;
+}
+
+.successful {
+    background: limegreen;
+}
+
+.failed {
+    background: orangered;
+}
+
+.info {
+    background: rgb(75, 219, 255);
+}
+
+/* Alerts End */

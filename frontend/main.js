@@ -326,7 +326,8 @@ async function init() {
 		setContent(0);
 
 	} catch (err) {
-		console.error(err);
+		handleError(err);
+
 	}
 }
 
@@ -414,7 +415,7 @@ async function deleteEntry(id) {
 		}
 	} catch (err) {
 		// If an error occurred during the deletion process, log the error message.
-		console.error(err);
+		handleError(err);
 	}
 }
 
@@ -682,7 +683,7 @@ async function setLocalisation(locCode) {
 		setContent(parseInt(currentMenuStorage.innerText));
 	} catch (error) {
 		// Logs any errors to the console.
-		console.error(error);
+		handleError(error);
 	}
 }
 
@@ -911,4 +912,55 @@ async function searchEntry() {
 		// Call the createTable function to format and display the search results
 		.then(response => console.log(JSON.stringify(response)));
 	// Log the response data as a JSON string to the console
+}
+
+/**
+ * Creates a popup alert which disappears after a set time.
+ * @param {string} header The header of the alert
+ * @param {string} text The text of the alert
+ * @param {string} type The type of the alert (successful/failed/info)
+ * @param {number} time The time the alert should be shown for in seconds
+ */
+function createAlert(header, text, type, time) {
+    const alertArea = Array.from(document.getElementsByClassName("alertArea"))[0];
+    var alert = document.createElement("button");
+    alert.classList.add("alert");
+    alert.classList.add(type);
+
+    var headerDiv = document.createElement("div");
+        var alertHeader = document.createElement("span");
+        alertHeader.innerText = header;
+        headerDiv.appendChild(alertHeader);
+
+        alert.appendChild(headerDiv);
+
+        alert.appendChild(document.createElement("br"));
+
+    var alertText = document.createElement("span");
+    alertText.innerText = text;
+    alert.appendChild(alertText);
+    alert.onclick = function () {
+        clearTimeout(timer);
+        alert.remove()
+    }
+
+    alertArea.appendChild(alert);
+    var timer = setTimeout(function () {
+        alert.classList.add("disabled");
+        setTimeout(function () {
+            alert.remove();
+        }, 200)
+    }, time * 1000)
+}
+
+/**
+ * This function handles alerts.
+ * @param {error} err The error to handle
+ */
+function handleError(err) {
+	console.log(err);
+	try {
+		createAlert("Error", err, "failed", 10);
+	} catch (error) {}
+	
 }

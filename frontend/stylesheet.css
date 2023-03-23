@@ -300,7 +300,8 @@ h3 {
 }
 
 .popupHeader>button {
-    height: 75%;
+    height: min-content;
+    width: min-content;
     background: transparent;
     border: none;
     margin-top: auto;

@@ -527,7 +527,7 @@ function closePopUp() {
  * @returns {Promise<HTMLFormElement>} - A promise that resolves to the generated edit form.
  */
 async function createEditFormFromConfig(input, id) {
-	var form;
+	var form = document.createElement("form");
 	// Get the configuration for the current page from pageConfig and assign it to a variable named config.
 	var config = pageConfig[parseInt(currentMenuStorage.innerText)];
 	// Create a new form element and assign it to a variable named form. Assign a function to its onsubmit event listener.

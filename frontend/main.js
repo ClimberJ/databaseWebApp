@@ -5,6 +5,9 @@ var pageConfig = {};
 var localisation = {};
 const language = "de-DE";
 
+const credentials = "YWRtaW46YWRtaW4xMjM0";
+var authHeader = new Headers();
+
 /**
  * Comments were generated using ChatGPT.
  */
@@ -109,7 +112,7 @@ function JSONtoHTMLtable(inputObj, headerNames, vars, withActions) {
  */
 function refreshTable() {
 	var config = pageConfig[parseInt(currentMenuStorage.innerText)];
-	fetch(apiBaseLink + config.link)
+	fetch(apiBaseLink + config.link, { headers : authHeader})
 		.then((response) => response.json())
 		.then((data) => createTable(data, config.headers, config.varNames, true));
 }
@@ -142,7 +145,7 @@ function setContent(input) {
 	currentMenuStorage.innerText = input;
 	console.log("setContent called with argument " + input);
 	var config = pageConfig[input];
-	fetch(apiBaseLink + config.link)
+	fetch(apiBaseLink + config.link, { headers : authHeader})
 		.then((response) => response.json())
 		.then((data) => createTable(data, config.headers, config.varNames, true));
 
@@ -174,7 +177,8 @@ async function createEntry() {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Basic ${credentials}`
 		},
 		body: JSON.stringify(creationData)
 	})
@@ -231,7 +235,7 @@ function createFormFromConfig(input) {
 				}
 			}
 			// Fetch the data for the selection options from the API
-			const res = fetch(apiBaseLink + element.path)
+			const res = fetch(apiBaseLink + element.path, { headers : authHeader})
 				.then(res => res = res.json())
 				.then(res => res.rows)
 				// For each row in the result set, create an option element and add it to the select element
@@ -290,12 +294,14 @@ function createFormFromConfig(input) {
  */
 async function init() {
 	try {
+		authHeader.set('Authorization', `Basic ${credentials}`);
 		// Send a GET request to retrieve the configuration data from the API
 		const req = await fetch(apiBaseLink + "/config", {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Basic ${credentials}`
 			},
 			body: JSON.stringify()
 		})
@@ -398,7 +404,8 @@ async function deleteEntry(id) {
 				method: 'DELETE',
 				headers: {
 					'Accept': 'application/json',
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+			'Authorization': `Basic ${credentials}`
 				},
 				body: JSON.stringify({
 					"id": id
@@ -450,7 +457,8 @@ async function editEntry(id) {
 		method: 'PATCH',
 		headers: {
 			'Accept': 'application/json',
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Basic ${credentials}`
 		},
 		body: JSON.stringify(updateData)
 	})
@@ -534,7 +542,7 @@ async function createEditFormFromConfig(input, id) {
 	form.onsubmit = function () { handleEditSubmit(event, id) };
 	// Make a GET request to the specified API endpoint using the API base link and config.link. Parse the response as JSON.
 	// Retrieve the first row from the response and assign it to responseRow.
-	await fetch(apiBaseLink + config.link + "/" + id)
+	await fetch(apiBaseLink + config.link + "/" + id, { headers : authHeader})
 		.then(response => response.json())
 		.then(response => response.rows[0])
 		.then(responseRow =>
@@ -557,7 +565,7 @@ async function createEditFormFromConfig(input, id) {
 							node.setAttribute(attribute, element[attribute])
 						}
 					}
-					const res = fetch(apiBaseLink + element.path)
+					const res = fetch(apiBaseLink + element.path, { headers : authHeader})
 						.then(res => res.json())
 						.then(res => res.rows)
 						.then(res => res.forEach(row => {
@@ -671,7 +679,8 @@ async function setLocalisation(locCode) {
 			method: 'GET',
 			headers: {
 				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Basic ${credentials}`
 			},
 			body: JSON.stringify()
 		});
@@ -812,7 +821,7 @@ function createSearchFormFromConfig(config) {
 			node.appendChild(noSelect);
 
 			// fetch the values for the dropdown from the server
-			const res = fetch(apiBaseLink + element.path)
+			const res = fetch(apiBaseLink + element.path, { headers : authHeader})
 				.then(res => res = res.json())
 				.then(res => res.rows)
 				.then(res => res.forEach(row => {
@@ -903,7 +912,8 @@ async function searchEntry() {
 		method: 'GET',
 		headers: {
 			'Accept': 'application/json',
-			'Content-Type': 'application/x-www-form-urlencoded'
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': `Basic ${credentials}`
 		},
 	})
 		.then(response => response.json())
